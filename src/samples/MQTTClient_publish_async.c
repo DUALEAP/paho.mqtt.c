@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2023 IBM Corp., Ian Craggs
+ * Copyright (c) 2012, 2022 IBM Corp., Ian Craggs
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v2.0
@@ -53,8 +53,7 @@ int msgarrvd(void *context, char *topicName, int topicLen, MQTTClient_message *m
 void connlost(void *context, char *cause)
 {
     printf("\nConnection lost\n");
-    if (cause)
-    	printf("     cause: %s\n", cause);
+    printf("     cause: %s\n", cause);
 }
 
 int main(int argc, char* argv[])

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2023 IBM Corp., Ian Craggs
+ * Copyright (c) 2012, 2022 IBM Corp., Ian Craggs
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v2.0
@@ -45,8 +45,7 @@ void connlost(void *context, char *cause)
 	int rc;
 
 	printf("\nConnection lost\n");
-	if (cause)
-		printf("     cause: %s\n", cause);
+	printf("     cause: %s\n", cause);
 
 	printf("Reconnecting\n");
 	conn_opts.keepAliveInterval = 20;
@@ -152,7 +151,7 @@ int main(int argc, char* argv[])
 		exit(EXIT_FAILURE);
 	}
 
-	if ((rc = MQTTAsync_setCallbacks(client, client, connlost, messageArrived, NULL)) != MQTTASYNC_SUCCESS)
+	if ((rc = MQTTAsync_setCallbacks(client, NULL, connlost, messageArrived, NULL)) != MQTTASYNC_SUCCESS)
 	{
 		printf("Failed to set callback, return code %d\n", rc);
 		exit(EXIT_FAILURE);
